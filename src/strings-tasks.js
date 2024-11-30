@@ -487,8 +487,21 @@ function extractEmails(str) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  let cipheredStr = '';
+  const abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const rot13abc = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
+
+  for (let i = 0; i < str.length; i += 1) {
+    const index = abc.indexOf(str[i]);
+    if (index !== -1) {
+      cipheredStr += rot13abc[index];
+    } else {
+      cipheredStr += str[i];
+    }
+  }
+
+  return cipheredStr;
 }
 
 /**
